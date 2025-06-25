@@ -17,6 +17,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def healthcheck():
+    return {"status": "ok"}
+
+
 @app.post("/generate")
 async def generate(request: Request):
     data = await request.json()
