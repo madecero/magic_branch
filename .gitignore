@@ -1,23 +1,43 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Ignore Python environment
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
 
-# Ignore env files
+# Ignore dotenv files
 .env
 .env.*
 
-# Node
-node_modules/
-
-# Python
-__pycache__/
-*.pyc
-
-# OS junk
-.DS_Store
-
-# Build outputs
-.next/
-dist/
-build/
-
-# Logs
+# Ignore logs
 *.log
+
+# Ignore OS junk
+.DS_Store
+Thumbs.db
+
+# Ignore node_modules (frontend)
+node_modules/
+frontend/node_modules/
+
+# Ignore build and dist
+build/
+dist/
+.next/
+out/
+
+# Ignore coverage reports
+coverage/
+*.lcov
+
+# Ignore lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore TypeScript build info
+*.tsbuildinfo
+
+# Ignore local IDE/editor folders
+.vscode/
+.idea/
+*.swp
