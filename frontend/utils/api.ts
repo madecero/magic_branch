@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:8000", // Update if backend URL changes
+  baseURL: "https://magic-branch.onrender.com", // Use Render backend URL
 });
 
 export const generateStory = async (payload: {
