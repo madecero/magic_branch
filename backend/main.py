@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from .story_generator import generate_story
-from .image_generator import generate_images
+from story_generator import generate_story
+from image_generator import generate_images
 
 from dotenv import load_dotenv
 load_dotenv()
