@@ -17,7 +17,7 @@ def generate_story(data):
         "Avoid headings like 'Page 1'. Do not leave any page empty. Each paragraph should be fun, simple, and imaginative."
         "The main character of the story is a child named {name} who is {age} years old and enjoys {interests}."
         "The child should get a sense that magic is real from the story."
-    ).format(length=length)
+    ).format(length=length, name=name, age=age, interests=interests)
 
     user_prompt = (
         f"Write a children's story for a {age}-year-old named {name} who enjoys {interests}. "
