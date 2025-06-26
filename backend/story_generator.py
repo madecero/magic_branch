@@ -7,6 +7,7 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def generate_story(data):
     name = data.get("name", "the child")
+    gender = data.get("gender", "neutral")
     age = data.get("age", 4)
     interests = ", ".join(data.get("interests", []))
     length = data.get("length", 5)

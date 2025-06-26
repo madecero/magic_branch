@@ -7,6 +7,7 @@ const API = axios.create({
 
 export const generateStory = async (payload: {
   name: string;
+  gender: string;
   age: number;
   interests: string[];
   length: number;
