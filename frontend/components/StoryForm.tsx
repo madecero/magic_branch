@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { generateStory } from "../utils/api";
+import { Page } from "../types/page";
 
-export default function StoryForm({ onStoryGenerated }: { onStoryGenerated: (pages: any[]) => void }) {
+export default function StoryForm({ onStoryGenerated }: { onStoryGenerated: (pages: Page[]) => void }) {
   const [name, setName] = useState("");
   const [age, setAge] = useState(4);
   const [interests, setInterests] = useState("");

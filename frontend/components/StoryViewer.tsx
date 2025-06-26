@@ -1,6 +1,8 @@
 import { useState } from "react";
+import Image from "next/image";
+import { Page } from "../types/page";
 
-export default function StoryViewer({ pages }: { pages: { text: string; image: string }[] }) {
+export default function StoryViewer({ pages }: { pages: Page[] }) {
   const [index, setIndex] = useState(0);
   const next = () => setIndex(i => Math.min(i + 1, pages.length - 1));
   const prev = () => setIndex(i => Math.max(i - 1, 0));
@@ -8,7 +10,15 @@ export default function StoryViewer({ pages }: { pages: { text: string; image: s
 
   return (
     <div className="text-center space-y-4">
-      <img src={page.image} alt="illustration" className="mx-auto rounded max-h-96 object-contain" />
+      <div className="relative w-full h-72 mx-auto">
+        <Image
+          src={page.image}
+          alt="illustration"
+          layout="fill"
+          objectFit="contain"
+          className="rounded"
+        />
+      </div>
       <p className="text-lg">{page.text}</p>
       <div className="flex justify-between">
         <button onClick={prev} className="bg-gray-300 px-4 py-2 rounded">⬅ Back</button>
@@ -17,3 +27,4 @@ export default function StoryViewer({ pages }: { pages: { text: string; image: s
     </div>
   );
 }
+
