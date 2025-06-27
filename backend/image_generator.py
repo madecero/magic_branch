@@ -1,17 +1,25 @@
 import os
-import replicate
+from openai import OpenAI
+from dotenv import load_dotenv
 
-replicate_client = replicate.Client(api_token=os.getenv("REPLICATE_API_TOKEN"))
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def generate_images(story_chunks):
     images = []
-
-    for prompt in story_chunks:
-        output = replicate_client.run(
-            "stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc",  # SDXL
-            input={"prompt": prompt}
+    for chunk in story_chunks:
+        image_prompt = f"Children's book illustration: {chunk[:200]}"
+        
+        response = client.images.generate(
+            model="dall-e-3",
+            prompt=image_prompt,
+            n=1,
+            size="1024x1024",  # or "512x512"
+            quality="standard"
         )
-        images.append(output[0])  # First URL in list
-
+        
+        image_url = response.data[0].url
+        images.append(image_url)
+    
     return images
 
