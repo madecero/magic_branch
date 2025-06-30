@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+import torch
 
 load_dotenv()
 from diffusers import DiffusionPipeline
@@ -9,7 +10,7 @@ HF_TOKEN = os.getenv("HF_TOKEN")
 pipe = DiffusionPipeline.from_pretrained(
     "stabilityai/sdxl-turbo",
     use_auth_token=HF_TOKEN,
-    torch_dtype="auto"
+    torch_dtype=torch.float32
 )
 pipe.to("cuda" if pipe.device.type == "cuda" else "cpu")
 
